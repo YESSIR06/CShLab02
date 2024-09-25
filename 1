@@ -1,0 +1,124 @@
+ExcelentPupil excelentPupil1 = new ExcelentPupil();
+ExcelentPupil excelentPupil2 = new ExcelentPupil();
+GoodPupil goodPupil = new GoodPupil();
+BadPupil badPupil = new BadPupil();
+
+Console.WriteLine("-----Classroom with 2 pupil-----");
+ClassRoom classRoom2 = new ClassRoom(excelentPupil1, excelentPupil2);
+classRoom2.Info();
+
+Console.WriteLine("-----Classroom with 3 pupil-----");
+ClassRoom classRoom3 = new ClassRoom(excelentPupil1, excelentPupil2, goodPupil);
+classRoom3.Info();
+
+Console.WriteLine("-----Classroom with 4 pupil-----");
+ClassRoom classRoom4 = new ClassRoom(excelentPupil1, excelentPupil2, goodPupil, badPupil);
+classRoom4.Info();
+
+class ClassRoom
+{
+    private Pupil[] pupils;
+    
+    public ClassRoom(params Pupil[] pupils)
+    {
+        this.pupils = pupils;
+    }
+
+    public void Info()
+    {
+        for (int i = 0; i < pupils.Length; i++)
+        {
+            Console.WriteLine($"{pupils[i]}: ");
+            pupils[i].Study();
+            pupils[i].Read();
+            pupils[i].Write();
+            pupils[i].Relax();
+        }
+    }
+    
+}
+
+class Pupil
+{
+
+    public virtual void Study()
+    {
+        Console.WriteLine("Pupil study");
+    }
+
+    public virtual void Read()
+    {
+        Console.WriteLine("Pupil read");
+    }
+
+    public virtual void Write()
+    {
+        Console.WriteLine("Pupil write");
+    }
+
+    public virtual void Relax()
+    {
+        Console.WriteLine("Pupil relax");
+    }
+    
+}
+
+class ExcelentPupil : Pupil
+{
+    public override void Study()
+    {
+        Console.WriteLine("Excelent pupil study");
+    }
+    public override void Read()
+    {
+        Console.WriteLine("Excelent pupil read");
+    }
+    public override void Write()
+    {
+        Console.WriteLine("Excelent pupil write");
+    }
+    public override void Relax()
+    {
+        Console.WriteLine("Excelent pupil relax");
+    }
+}
+
+class GoodPupil : Pupil
+{
+    public override void Study()
+    {
+        Console.WriteLine("Good pupil study");
+    }
+    public override void Read()
+    {
+        Console.WriteLine("Good pupil read");
+    }
+    public override void Write()
+    {
+        Console.WriteLine("Good pupil write");
+    }
+    public override void Relax()
+    {
+        Console.WriteLine("Good pupil relax");
+    }
+}
+
+class BadPupil : Pupil
+{
+    public override void Study()
+    {
+        Console.WriteLine("Bad pupil study");
+    }
+    public override void Read()
+    {
+        Console.WriteLine("Bad pupil read");
+    }
+    public override void Write()
+    {
+        Console.WriteLine("Bad pupil write");
+    }
+    public override void Relax()
+    {
+        Console.WriteLine("Bad pupil relax");
+    }
+}
