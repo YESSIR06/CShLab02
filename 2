@@ -1,0 +1,86 @@
+Console.WriteLine("---Самолет---");
+Plane airbusA330 = new Plane(new int[] {1, 2, 3}, 526500000, 880, 1994,
+    12498, 253);
+airbusA330.Print();
+
+Console.WriteLine("---Машина---");
+Car ferrari296GTB = new Car(new int[] { 4, 5, 6}, 39900000, 330, 2023);
+ferrari296GTB.Print();
+
+Console.WriteLine("---Корабль---");
+Ship titanic = new Ship(new int[] { 7, 8, 9}, 7300000, 42, 1997,
+    3885, "Саутгемптон"); 
+titanic.Print();
+class Vehicle
+{
+    private int[] coordinates = new int[3];
+    private int price;
+    private int maxSpeed;
+    private int yearOfRelease;
+    public Vehicle(int[] coordinates, int price, int maxSpeed, int yearOfRelease)
+    {
+        this.coordinates = coordinates;
+        this.price = price;
+        this.maxSpeed = maxSpeed;
+        this.yearOfRelease = yearOfRelease;
+    }
+    public virtual void Print()
+    {
+        Console.WriteLine($"Координаты: {coordinates[0]} {coordinates[1]} {coordinates[2]}");
+        Console.WriteLine($"Цена: {price}");
+        Console.WriteLine($"Максимальная скорость: {maxSpeed}");
+        Console.WriteLine($"Год выпуска: {yearOfRelease}");
+    }
+}
+
+class Plane : Vehicle
+{
+    private int height;
+    private int numOfPassengers;
+    
+    public Plane(int[] coordinates, int price, int maxSpeed, int yearOfRelease, int height, int numOfPassengers) 
+        : base(coordinates, price, maxSpeed, yearOfRelease)
+    {
+        this.height = height;
+        this.numOfPassengers = numOfPassengers;
+    }
+    public override void Print()
+    {
+        base.Print();
+        Console.WriteLine($"Высота: {height}");
+        Console.WriteLine($"Количество пассажиров: {numOfPassengers}");
+    }
+}
+
+class Car : Vehicle
+{
+    public Car(int[] coordinaintes, int price, int maxSpeed, int yearOfRelease)
+        : base(coordinaintes, price, maxSpeed, yearOfRelease)
+    {
+    }
+    public override void Print()
+    {
+        base.Print();
+    }
+}
+
+class Ship : Vehicle
+{
+    private int numOfPassengers;
+    private string portHome;
+
+    public Ship(int[] coordinates, int price, int maxSpeed,int yearOfRelease, int numOfPassengers, string portHome)
+        : base(coordinates, price, maxSpeed, yearOfRelease)
+    {
+        this.numOfPassengers = numOfPassengers;
+        this.portHome = portHome;
+    }
+
+    public override void Print()
+    {
+        base.Print();
+        Console.WriteLine($"Количество пассажиров: {numOfPassengers}");
+        Console.WriteLine($"Порт прописки: {portHome}");
+    }
+}
+
